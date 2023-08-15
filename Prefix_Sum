@@ -1,0 +1,44 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void print_array(vector<int>&v)
+{
+for(int i = 0;i<v.size();i++)
+{
+    cout<<v[i]<<" ";
+}
+}
+
+vector<int> pre(vector<int> &v)
+{
+   // v[0] = 1; by default v[0] is taken as zero when no value is initialised
+for(int i = 1;i<v.size();i++)
+{
+    v[i] += v[i - 1];
+}
+return v;
+}
+
+int main()
+{
+    cout<<"Enter the size of the vector: ";
+    int n;
+    cin>>n;
+    vector<int>v;
+    cout<<"Enter the elements of the array: ";
+    for(int i = 0;i<n;i++)
+    {
+        int ele;
+        cin>>ele;
+        v.push_back(ele);
+    }
+    cout<<"The entered vector is : ";
+    print_array(v);
+    cout<<endl;
+    
+    vector<int> prefix_sum = pre(v);
+    cout<<"The prefix sum of the given vector is: ";
+    print_array(v);
+    return 0;
+}
